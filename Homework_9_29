@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+body {
+height: 1000px;
+width: 1000px;	
+background-color: #f5efbf;
+}
+
+div.G {
+	position: fixed; 
+	z-index: -4;
+
+}
+div.Gsmall {
+	position: fixed; 
+	z-index: -5;
+
+}
+div.Gdarkb {
+	position: fixed; 
+	z-index: -3;
+
+}
+div.Glightb {
+	position: fixed; 
+	z-index: -2;
+
+}
+div.Gblack {
+	position: fixed; 
+	z-index: -1;
+}
+
+div.ooh {
+	transform: rotate(-7deg);
+	display: inline;
+	position: fixed;
+	z-index: -6;
+}
+div.cirsmall {
+	transform: rotate(-7deg);
+	display: inline;
+	position: fixed;
+	z-index: -7;
+}
+div.line {
+	display: inline;
+	position: fixed;
+}
+
+</style>
+</head>
+<body>
+
+
+<!-- G is for Gwwwwhy am I doing this -->
+
+
+<div class="Gblack">
+<svg>
+  <circle cx="72" cy="80" r="14" stroke="none" fill="black" />
+</svg>
+</div>
+
+<div class="Glightb">
+<svg>
+  <circle cx="72" cy="80" r="22" stroke="black" stroke-width="06" fill="#3c8188" />
+</svg>
+</div>
+
+<div class="Gdarkb">
+<svg>
+  <circle cx="72" cy="80" r="42" stroke="black" stroke-width="20" fill="#1f4258" />
+</svg>
+</div>
+
+<div class="G">
+<svg>
+  <circle cx="72" cy="80" r="58" stroke="black" stroke-width="3" fill="white" fill-opacity="0.5" />
+</svg>
+</div>
+
+<div class="Gsmall">
+<svg>
+  <circle cx="30" cy="120" r="20" stroke="black" stroke-width="1" fill="white" />
+</svg>
+</div>
+
+<div class="line">
+<svg>
+<line x1="130" y1="75" x2="157" y2="65" style="stroke:black; stroke-width:1" />
+</svg>
+</div>
+
+<div class="line">
+<svg>
+<line x1="130" y1="90" x2="160" y2="90" style="stroke:black; stroke-width:1" />
+</svg>
+</div>
+
+<div class="line">
+<svg>
+<line x1="128" y1="96" x2="160" y2="96" style="stroke:black; stroke-width:3" />
+</svg>
+</div>
+
+<div class="line">
+<svg>
+<line x1="138" y1="60" x2="138" y2="116" style="stroke:black; stroke-width:1" />
+</svg>
+</div>
+
+
+<!-- End G, and end my life. Begin to oogieboogie-->
+
+
+<div class="ooh">
+<svg>
+  <circle cx="205" cy="150" r="35" stroke="none" fill="black" />
+</svg>
+</div>
+<div class="ooh">
+<svg>
+  <circle cx="140" cy="150" r="35" stroke="none" fill="black" />
+</svg>
+</div>
+
+<div class="ooh">
+<svg>
+  <circle cx="205" cy="150" r="29" stroke="#efcd6c" stroke-width="3" fill="white" />
+</svg>
+</div>
+<div class="ooh">
+<svg>
+  <circle cx="140" cy="150" r="29" stroke="#d55c41" stroke-width="3"  fill="white" />
+</svg>
+</div>
+
+<div class="line">
+<svg>
+<line x1="200" y1="50" x2="280" y2="530" style="stroke:black; stroke-width:1" />
+</svg>
+</div>
+
+<div class="line">
+<svg>
+<line x1="110" y1="155" x2="300" y2="133" style="stroke:black; stroke-width:1" />
+</svg>
+</div>
+
+<div class="cirsmall">
+<svg>
+  <circle cx="125" cy="150" r="19" stroke="none" fill="black" />
+</svg>
+</div>
+<div class="cirsmall">
+<svg>
+  <circle cx="125" cy="150" r="15" stroke="#efcd6c" stroke-width="3" fill="white" />
+</svg>
+</div>
+
+<div class="line">
+<svg>
+<line x1="290" y1="45" x2="240" y2="120" style="stroke:black; stroke-width:1" />
+</svg>
+</div>
+<div class="line">
+<svg>
+<line x1="293" y1="49" x2="240" y2="128" style="stroke:black; stroke-width:1" />
+</svg>
+</div>
+<div class="line">
+<svg>
+<line x1="285" y1="43" x2="236" y2="118" style="stroke:black; stroke-width:1" />
+</svg>
+</div>
+
+<div class="Gsmall">
+<svg>
+  <circle cx="235" cy="90" r="10" stroke="#336559" stroke-width="1" fill="white" />
+</svg>
+</div>
+
+<div class="Gsmall">
+<svg>
+  <circle cx="300" cy="75" r="7" stroke="#ca7f08" stroke-width="1" fill="#e0b439" />
+</svg>
+</div>
+
+
+
+<!-- giving up on the oog & moving on to those weird strokes -->
+
+<svg>
+  <circle cx="322" cy="80" r="32" stroke="black" stroke-width="1" fill="#4da6a4" />
+</svg>
+<svg>
+  <polygon points="200,130 230,308 290,188 150,168 260"
+  style="fill:#58528e;stroke:black;stroke-width:2;fill-rule:evenodd;" />
+</svg>
+
+
+<!-- i'm a good person and i don't deserve this -->
+
+
+</body>
+</html>
