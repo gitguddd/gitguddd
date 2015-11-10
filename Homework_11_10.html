@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+ <html lang="en">
+
+ <head>
+ 		<script src="http://d3js.org/d3.v3.min.js"></script>
+</head>
+
+<title>a semblance of knowledge</title>
+
+<style>
+#controls {
+	background-color: grey;
+	display: block;
+	position: absolute;
+	top:0;
+	bottom:0;
+	width:100%;
+	height:100%;
+}
+svg {
+	background-color:grey;
+	margin-left:200px;
+}
+</style>
+
+
+<body>
+	<div id="controls">
+		<select id="County_dropdown"></select>
+<div>
+<svg width=500 height=500></svg>
+
+<script>
+
+
+var raw_data = [],
+	County = false;
+
+d3.tsv("https://gitguddd.github.io/finalwords.tsv", function (error, data){
+
+	raw_data = data.filter(function(d){
+		return d.County;
+	});
+
+	var Counties = [];
+	raw_data.forEach(function(d){
+		if (Counties.indexOf(d.County) == -1) {
+			Counties.push(d.County);
+		}
+	});
+
+	Counties.sort();
+	County = County[0];
+
+	d3.select("#County_dropdown").selectAll("option")
+		.data(Counties).enter().append("option")
+		.attr("value", function(d){
+			return d;
+		})
+		.text(function(d){
+			return d;
+		});
+
+		d3.select("#County_dropdown").on("change", function(){
+			County = Counties[this.selectedIndex];
+
+		});
+
+	});
+
+	function draw() {
+		var County_data = raw_data.filter(function(d){
+			return d.County === County;
+		});
+
+		var scale = d3.scale.linear()
+			.domain([0, 500])
+			.range([0, 100]);
+
+		var CountyID = (Counties.indexOf([this.selectedIndex]) / [County_data.length]);
+
+		var circle = d3.select("svg").selectAll("circle")
+			.data([CountyID]);
+
+		circle.enter().append("circle")
+			.attr("r", 0)
+			.attr("cx", 250)
+			.attr("cy", 250);
+
+		circle.transition().duration(500)
+			.attr("r", function (d){
+				return scale(d.Counties);
+		});
+
+	}
+
+
+</script>
+
+</body>
+</html>
+
