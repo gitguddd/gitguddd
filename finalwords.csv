@@ -2,30 +2,30 @@ Execution,	Last Name,	First Name,	TDCJ Number,	Age,	Date,	Race,	County
 530,	Escamilla,	Licho,	999432,	33,	10/14/15,	Hispanic,	Dallas
 529,	Garcia,	Juan,	999360,	35,	10/6/15,	Hispanic,	Harris
 528,	Lopez,	Daniel,	999555,	27,	8/12/15,	Hispanic,	Nueces
-527	Russeau	Gregory	999430	46	6/18/15	Black	Smith
-526	Bower	Lester	764	67	6/3/15	White	Grayson
-525	Charles	Derrick	999451	32	5/12/15	Black	Harris
-524	Garza	Manuel	999434	34	4/15/15	Hispanic	Bexar
-523	Sprouse	Kent	999471	42	4/9/15	White	Ellis
-522	Vasquez	Manuel	999336	46	3/12/15	Hispanic	Bexar
-521	Newbury	Donald	999403	53	2/4/15	White	Dallas
-520	Ladd	Robert	999237	57	1/29/15	Black	Smith
-519	Prieto	Arnold	999149	42	1/21/15	Hispanic	Bexar
-518	Paredes	Miguel	999400	32	10/28/14	Hispanic	Bexar
-517	Coleman	Lisa	999511	38	9/17/14	Black	Tarrant
-516	Trottie	Willie	999085	45	9/10/14	Black	Harris
-515	Villegas	Jose	999417	39	4/16/14	Hispanic	Nueces
-514	Hernandez	Ramiro	999342	44	4/9/14	Hispanic	Kerr
-513	Sells	Tommy	999367	49	4/3/14	White	Val Verde
-512	Doyle	Anthony	999478	29	3/27/14	Black	Dallas
-511	Jasper	Ray	999341	33	3/19/14	Black	Bexar
-510	Basso	Suzanne	999329	59	2/5/14	White	Harris
-509	Tamayo	Edgar	999130	46	1/22/14	Hispanic	Harris
-508	Martin	Jerry	999552	43	12/3/13	White	Leon
-507	McCoskey	Jamie	999053	49	11/12/13	White	Harris
-506	Yowell	Michael	999334	43	10/9/13	White	Lubbock
-505	Diaz	Arturo	999345	37	9/26/13	Hispanic	Hidalgo
-504	Garza	Robert	999466	30	9/19/13	Hispanic	Hidalgo
+527,	Russeau,	Gregory,	999430,	46,	6/18/15,	Black,	Smith
+526,	Bower,	Lester,	764,	67,	6/3/15,	White,	Grayson
+525,	Charles,	Derrick,	999451,	32,	5/12/15,	Black,	Harris
+524,	Garza,	Manuel,	999434,	34,	4/15/15,	Hispanic,	Bexar
+523,	Sprouse,	Kent,	999471,	42,	4/9/15,	White,	Ellis
+522,	Vasquez,	Manuel,	999336,	46,	3/12/15,	Hispanic,	Bexar
+521,	Newbury,	Donald,	999403,	53,	2/4/15,	White,	Dallas
+520,	Ladd,	Robert,	999237,	57,	1/29/15,	Black,	Smith
+519,	Prieto,	Arnold,	999149,	42,	1/21/15,	Hispanic,	Bexar
+518,	Paredes,	Miguel,	999400,	32,	10/28/14,	Hispanic,	Bexar
+517,	Coleman,	Lisa,	999511,	38,	9/17/14,	Black,	Tarrant
+516,	Trottie,	Willie,	999085,	45,	9/10/14,	Black,	Harris
+515,	Villegas,	Jose,	999417,	39,	4/16/14,	Hispanic,	Nueces
+514,	Hernandez,	Ramiro,	999342,	44,	4/9/14,	Hispanic,	Kerr
+513,	Sells,	Tommy,	999367,	49,	4/3/14,	White,	Val, Verde
+512,	Doyle,	Anthony,	999478,	29,	3/27/14,	Black,	Dallas
+511,	Jasper,	Ray,	999341,	33,	3/19/14,	Black,	Bexar
+510,	Basso,	Suzanne,	999329,	59,	2/5/14,	White	Harris
+509,	Tamayo,	Edgarv	999130,	46,	1/22/14,	Hispanic,	Harris
+508,	Martin,	Jerry,	999552,	43,	12/3/13,	White,	Leon
+507,	McCoskey,	Jamie,	999053,	49,	11/12/13,	White,	Harris
+506,	Yowell,	Michael,	999334,	43,	10/9/13,	White,	Lubbock
+505,	Diaz,	Arturo,	999345,	37,	9/26/13,	Hispanic,	Hidalgo
+504,	Garza,,	Robert,	999466,	30,	9/19/13,	Hispanic,	Hidalgo
 503	Feldman	Douglas	999326	55	7/31/13	White	Dallas
 502	Ross	Vaughn	999429	41	7/18/13	Black	Lubbock
 501	Quintanilla	John	999491	36	7/16/13	Hispanic	Victoria
@@ -513,19 +513,19 @@ Execution,	Last Name,	First Name,	TDCJ Number,	Age,	Date,	Race,	County
 19	Evans	Michael	608	30	12/4/86	Black	Dallas
 18	Wicker	Chester	678	37	8/26/86	White	Galveston
 17	Smith	Larry	643	30	8/22/86	Black	Dallas
-16	Woolls	Randy	646	36	8/20/86	White	Tom Green
-15	Brock	Kenneth	522	37	6/19/86	White	Harris
-14	Esquivel	Rudy	606	50	6/9/86	Hispanic	Harris
-13	Pinkerton	Jay	686	24	5/15/86	White	Nueces
-12	Barney	Jeffery	714	28	4/16/86	White	Harris
-11	Bass	Charles	662	30	3/12/86	White	Harris
-10	Rumbaugh	Charles	555	28	9/11/85	White	Potter
-9	Porter	Henry	551	43	7/9/85	Hispanic	Tarrant
-8	Milton	Charles	628	34	6/25/85	Black	Tarrant
-7	De La Rosa	Jesse	713	24	5/15/85	Hispanic	Bexar
-6	Morin	Stephen	712	34	3/13/85	White	Jefferson
-5	Skillern	Doyle	518	49	1/16/85	White	Lubbock
-4	Barefoot	Thomas	621	39	10/30/84	White	Bell
-3	O'Bryan	Ronald	529	39	3/31/84	White	Harris
-2	Autry	James	670	29	3/14/84	White	Jefferson
-1	Brooks, Jr.	Charlie	592	40	12/7/82	Black	Tarrant
+16,	Woolls	Randy	646	36	8/20/86	White	Tom Green
+15,	Brock	Kenneth	522	37	6/19/86	White	Harris
+14,	Esquivel	Rudy	606	50	6/9/86	Hispanic	Harris
+13,	Pinkerton	Jay	686	24	5/15/86	White	Nueces
+12,	Barney	Jeffery	714	28	4/16/86	White	Harris
+11,	Bass	Charles	662	30	3/12/86	White	Harris
+10,	Rumbaugh	Charles	555	28	9/11/85	White	Potter
+9,	Porter	Henry	551	43	7/9/85	Hispanic	Tarrant
+8,	Milton	Charles	628	34	6/25/85	Black	Tarrant
+7,	De La Rosa	Jesse	713	24	5/15/85	Hispanic	Bexar
+6,	Morin	Stephen	712	34	3/13/85	White	Jefferson
+5,	Skillern	Doyle	518	49	1/16/85	White	Lubbock
+4,	Barefoot,	Thomas,	621,	39,	10/30/84,	White,	Bell
+3,	O'Bryan,	Ronald,	529,	39,	3/31/84,	White,	Harris
+2,	Autry,	James,	670,	29,	3/14/84,	White,	Jefferson
+1,	Brooks, Jr.	Charlie,	592,	40,	12/7/82,	Black,	Tarrant
