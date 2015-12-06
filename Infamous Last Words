@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+ <html lang="en">
+
+ <head>
+ 		<script src="http://d3js.org/d3.v3.min.js"></script>
+</head>
+
+<title>one huge WIP</title>
+
+<style>
+
+#controls {
+	background: #CCC;
+	display: block;
+	position: absolute;
+	top:0;
+	bottom:0;
+	left: 0;
+	right: 0;
+	width:100%;
+	height:100%;
+}
+
+#container{
+	background:rgba(255,255,255,0.5);
+	display: block;
+	position: fixed;
+	left:250px;
+	top:100px;
+
+}
+.sidebarnav{
+	background:rgba(255,255,255,0.0);
+	display: block;
+	position: fixed;
+	margin-left: 120px;
+	top:100px;
+	border-style: none;
+	color:#fff;
+}
+
+h1 {
+	margin-left: 120px;
+	font-weight:100;
+	color:#fff;
+	font-family:Courier;
+}
+.intro {
+	font-family: Courier;
+	color: #fff;
+	display:none;
+	position: fixed;
+	margin-left: 120px;
+	top:100px;
+	width:220px;
+}
+
+.show {
+	display:block;
+}
+
+h4 {
+	position:absolute;
+	/*margin-left: 510px;*/
+	left: 510px;
+	top:300px;
+	font-family:Courier;
+	color:#fff;
+	font-weight:300;
+}
+.box {
+	display:none;
+	height:395px;
+	width:300px;
+	position:fixed;
+	top:135px;
+	right:80px;
+	background-color:#ffffff;
+	opacity:0.5;
+	/*opacity: 0.0;*/
+}
+
+#pie {
+
+}
+</style>
+
+<body>
+<div id="controls" onClick="introFunction()">
+
+	<h1>Infamous Last Words</h1>
+		<h4></h4>
+	<p class="intro">532 Death Row inmates have been executed in Texas since 1982.</p>
+
+<!-- 	<select id="County_dropdown" class="sidebarnav"></select>
+ -->
+
+		<svg id="pie" width=100% height=600></svg>
+		<div class="box"></div> 
+
+</div>
+<script>
+
+var raw_data = [],
+	County = false;
+
+d3.tsv("https://gitguddd.github.io/finalwords.tsv", function (error, data){
+
+	raw_data = data.filter(function(d){
+		return d.County;
+	});
+
+	var Counties = [];
+	raw_data.forEach(function(d){
+		if (Counties.indexOf(d.County) == -1) {
+			Counties.push(d.County);
+		}
+	});
+
+	Counties.sort();
+	County = County[0];
+
+	function draw() {
+		
+		var County_data = d3.nest()
+			.key(function(d) {
+				return d.County;		
+			})
+			.entries(raw_data);
+
+		console.log(County_data);
+
+
+		// var color = d3.scale.category10();
+		var color = d3.scale.ordinal()
+		.range(["#ffffff","#ebf0fa","#d6e0f5","#c2d1f0", "#adc2eb", "#99b3e6", "#85a3e0", "#7094db", "#5c85d6", "#4775d1", "#3366cc", "#2e5cb8", "#2952a3", "#24478f", "#1f3d7a", "#193366", "#142952", "#0f1f3d" ]);
+
+		var pie = d3.layout.pie()
+			.value(function(d){
+				return d.values.length;
+			});
+
+			County_data = pie(County_data);
+
+			var arc = d3.svg.arc()
+			.innerRadius(100)
+			.outerRadius(200);
+
+		var slices = d3.select("#pie").selectAll("path")
+			.data(County_data);
+
+			slices.enter().append("path")
+			.attr("transform", "translate(550,250)")
+			.style("fill", function(d, i){
+			return color(i);
+			})
+			.attr("d", arc);
+
+			slices.on("click", function () {
+				
+			})
+
+			slices.on("mouseover", function(d){
+				console.log(d.data.key);
+				d3.select("h4").text(d.data.key);
+			})
+             .on("mouseout", function(d){
+             	d3.select("h4").text("");
+             });
+
+             slices.on("click", function(d){
+             	// d3.show("box")
+             	console.log(d.data.values);
+             	slices.transition().attr("transform", "translate(250,250)").duration("1000");
+             	d3.select("h4").transition().style("left", "210px").duration("1000");
+             	d3.select(".box").transition().style("display", "block").delay("1250");
+             	// d3.select(".box").transition().style("opacity", "1.0").delay("1650");
+           	})
+	 }
+
+
+	draw();
+})
+
+function introFunction(){
+		d3.select(".intro").classed("show", true);
+	}
+
+</script>
+</body>
+</html>
+
