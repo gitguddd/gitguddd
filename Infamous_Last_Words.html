@@ -74,9 +74,10 @@ h4 {
 	width:300px;
 	position:fixed;
 	top:135px;
-	right:80px;
-	background-color:#ffffff;
-	opacity:0.5;
+	left:480px;
+	background-color: #FFF;
+	opacity: 0.0;
+	
 	/*opacity: 0.0;*/
 }
 
@@ -170,11 +171,17 @@ d3.tsv("https://gitguddd.github.io/finalwords.tsv", function (error, data){
 
              slices.on("click", function(d){
              	// d3.show("box")
+
              	console.log(d.data.values);
              	slices.transition().attr("transform", "translate(250,250)").duration("1000");
              	d3.select("h4").transition().style("left", "210px").duration("1000");
-             	d3.select(".box").transition().style("display", "block").delay("1250");
+             	d3.select(".box").transition().style("display", "block").style("opacity",1.0).delay("1250");
              	// d3.select(".box").transition().style("opacity", "1.0").delay("1650");
+
+             	var pathColor = d3.select(this).style("fill");
+             	d3.select(".box").style("background-color", pathColor);
+
+
            	})
 	 }
 
