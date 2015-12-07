@@ -113,8 +113,8 @@ h4 {
 
 		<svg id="pie" width=100% height=600></svg>
 		<div class="box">
-		<button type="button" id="buttonprev">prev</button>
-		<button type="button" id="buttonnext">next</button>
+		<button class="buttonprev" type="button" id="buttonprev">&lt;</button>
+		<button class="buttonnext" type="button" id="buttonnext">&gt;</button>
 		</div> 
 
 </div>
@@ -185,10 +185,18 @@ d3.tsv("https://gitguddd.github.io/finalwords.tsv", function (error, data){
              	// d3.show("box")
 
              	slices.transition().attr("transform", "translate(250,250)").duration("1000");
-             	d3.select(".box").select("p").remove();
-             	var name = "Name: " + d.data.values[item].FirstName + " " + d.data.values[item].LastName;
+             	d3.select(".box").selectAll("p").remove();
+             	var name = "Name: " + d.data.values[item].FirstName + " " + d.data.values[item].LastName 
+             	var age = "Age: " + d.data.values[item].Age;
+             	var prisonId = "Prisoner ID: " + d.data.values[item].TDCJNumber;
+             	var date = "Date of Execution: " + d.data.values[item].Date;
+
              	d3.select(".box").append("p").text(name);
-             	console.log(d.data.values[0]);
+             	d3.select(".box").append("p").text(age);
+				d3.select(".box").append("p").text(prisonId);
+				d3.select(".box").append("p").text(date);
+
+
              	d3.select("h4").transition().style("left", "210px").duration("1000");
              	d3.select(".box").transition().style("display", "block").style("opacity",1.0).delay("1250");
              	// d3.select(".box").transition().style("opacity", "1.0").delay("1650");
@@ -201,25 +209,32 @@ d3.tsv("https://gitguddd.github.io/finalwords.tsv", function (error, data){
 
              	}else {
              		item = item - 1
-             		console.log(item);
-	             	d3.select(".box").selectAll("p").remove();
-	             	d3.select(".box").append("p").text(d.data.values[item].FirstName);
-	             	
-	             	d3.select(".box").append("p").text(d.data.values[item].LastName);
+             	          		console.log(item);
+             		var name = "Name: " + d.data.values[item].FirstName + " " + d.data.values[item].LastName;
+	             		d3.select(".box").selectAll("p").remove();
+	             		d3.select(".box").append("p").text(name);
+	             	var age = "Age: " + d.data.values[item].Age;
+	             		d3.select(".box").append("p").text(age);
+	             	var prisonId = "Prisoner ID: " + d.data.values[item].TDCJNumber;
+	             		d3.select(".box").append("p").text(prisonId);
+	             	var date = "Date of Execution: " + d.data.values[item].Date;
+	             		d3.select(".box").append("p").text(date);
              	}
              });
 
               d3.select("#buttonnext").on("click", function (){ 
-              	if (item > 16){
-
-             	}else {
-             		item = item + 1;
+              	if (item < d.data.values.length){
+              		item = item + 1;
              		console.log(item);
              		var name = "Name: " + d.data.values[item].FirstName + " " + d.data.values[item].LastName;
-	             	d3.select(".box").selectAll("p").remove();
-	             	d3.select(".box").append("p").text(name);
-	             	
-	             	// d3.select(".box").append("p").text(d.data.values[item].LastName);
+	             		d3.select(".box").selectAll("p").remove();
+	             		d3.select(".box").append("p").text(name);
+	             	var age = "Age: " + d.data.values[item].Age;
+	             		d3.select(".box").append("p").text(age);
+	             	var prisonId = "Prisoner ID: " + d.data.values[item].TDCJNumber;
+	             		d3.select(".box").append("p").text(prisonId);
+	             	var date = "Date of Execution: " + d.data.values[item].Date;
+	             		d3.select(".box").append("p").text(date);
              	}
              });
 
