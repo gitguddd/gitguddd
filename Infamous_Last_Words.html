@@ -91,12 +91,18 @@ h4 {
 }
 
 #buttonprev {
+	cursor: pointer;
 
 }
 
 
 #buttonnext {
+	cursor: pointer;
 
+}
+
+path {
+	cursor: pointer;
 }
 
 </style>
@@ -162,7 +168,7 @@ d3.tsv("https://gitguddd.github.io/finalwords.tsv", function (error, data){
 
 			var arc = d3.svg.arc()
 			.innerRadius(100)
-			.outerRadius(200);
+			.outerRadius(200);	
 
 		var slices = d3.select("#pie").selectAll("path")
 			.data(County_data);
