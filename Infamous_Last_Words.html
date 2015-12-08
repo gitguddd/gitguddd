@@ -2,15 +2,17 @@
  <html lang="en">
 
  <head>
+ 	<link href='https://fonts.googleapis.com/css?family=Roboto:400,900,700,500,300,100&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
  		<script src="http://d3js.org/d3.v3.min.js"></script>
 </head>
 
-<title>one huge WIP</title>
+<title>Criminals by County</title>
 
 <style>
 
+
 #controls {
-	background: #CCC;
+	background: #f2f2f2;
 	display: block;
 	position: absolute;
 	top:0;
@@ -26,7 +28,7 @@
 	display: block;
 	position: fixed;
 	left:250px;
-	top:100px;
+	top:500px;
 
 }
 .sidebarnav{
@@ -41,63 +43,125 @@
 
 h1 {
 	margin-left: 120px;
-	font-weight:100;
-	color:#fff;
-	font-family:Courier;
+	font-weight:500;
+	font-family: 'Roboto', sans-serif;
 }
 .intro {
-	font-family: Courier;
-	color: #fff;
-	display:none;
-	position: fixed;
+	font-family: 'Roboto', sans-serif;
+	font-weight:300;
+	display:block;
 	margin-left: 120px;
 	top:100px;
-	width:220px;
+	width:600px;
 }
 
+.hide {
+	display:none;
+}
 .show {
 	display:block;
 }
 
 h4 {
 	position:absolute;
+	text-align: center;
 	/*margin-left: 510px;*/
-	left: 510px;
-	top:300px;
-	font-family:Courier;
-	color:#fff;
+	font-family: 'Roboto', sans-serif;
 	font-weight:300;
+}
+.arrow {
+	text-align: center;
+	cursor: pointer;
+	display:inline-block;
+ 	overflow: auto;
+ 	white-space: nowrap;
+  	margin:0px auto;
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    overflow: hidden;
+    outline:none;
+    font-weight:900;
+    font-size: 70px;
+    vertical-align:middle;
+    position:relative;
+    top:50%; 
+    left:50%;
 }
 .box {
 	display:none;
 	height:395px;
 	width:300px;
-	position:fixed;
-	top:135px;
-	left:480px;
+	position:absolute;
+	top:145px;
+	left:535px;
 	background-color: #FFF;
 	opacity: 0.0;
 	color:#000;
+	padding:40px;
+	text-align: center;
 	
 	/*opacity: 0.0;*/
+}
+
+hr {
+    border: 0;
+    height: 4px;
+    background: #333;
+    margin-left: 113px;
+    
+}
+
+hr.inner {
+    border: 0;
+    height: 2px;
+    background: #333;
+    
 }
 
 #pie {
 
 }
 
+
 .button {
 
 }
 
 #buttonprev {
-	cursor: pointer;
+	display:inline-block;
+ 	overflow: auto;
+  	white-space: nowrap;
+  	margin:0px auto;
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+    font-weight:900;
+    font-size: 20px;
+	top: 50px;
 
 }
 
 
 #buttonnext {
 	cursor: pointer;
+	display:inline-block;
+ 	overflow: auto;
+ 	white-space: nowrap;
+  	margin:0px auto;
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+    font-weight:900;
+    font-size: 20px;
+	vertical-align: middle;
+
 
 }
 
@@ -105,25 +169,56 @@ path {
 	cursor: pointer;
 }
 
+p {
+	font-family: 'Roboto', sans-serif;
+	font-weight:300;
+}
+
+#wrapper {
+
+}
+
+#footer{ 
+	position: absolute; 
+	padding: 10px 0px 0px 0px; 
+	bottom: 0px; 
+	font-family: 'Roboto', sans-serif;
+	font-weight:500;
+	font-size:14px;
+	background-color:#fff;
+	height:25px;
+	width:99%;
+	vertical-align: middle;
+}
+
+
 </style>
 
 <body>
-<div id="controls" onClick="introFunction()">
+	<div id="wrapper">
 
-	<h1>Infamous Last Words</h1>
-		<h4></h4>
-	<p class="intro">532 Death Row inmates have been executed in Texas since 1982.</p>
+<div id="controls">
+	<h1>Death Row Inmates by County</h1>
+	<hr align="left" width="59%"/>
+	<p class="intro">Since, 1982, 531 Death Row inmates have been executed in Texas. Below, you will find a list of all of them, categorized by the County they were arrested in.<br>
+	<button class="arrow" type="button" onClick="introFunction()">&or;</button>
+
+</p>
+
 
 <!-- 	<select id="County_dropdown" class="sidebarnav"></select>
- -->
+ -->	
+ 		<h4></h4>
 
 		<svg id="pie" width=100% height=600></svg>
 		<div class="box">
-		<button class="buttonprev" type="button" id="buttonprev">&lt;</button>
-		<button class="buttonnext" type="button" id="buttonnext">&gt;</button>
-		</div> 
+		<button class="buttonprev" type="button" id="buttonprev" style="float: left;">&lt;</button>
+		<button class="buttonnext" type="button" id="buttonnext" style="float: right;">&gt;</button>
 
+		</div> 
 </div>
+</div>
+
 <script>
 
 var raw_data = [],
@@ -157,7 +252,7 @@ d3.tsv("https://gitguddd.github.io/finalwords.tsv", function (error, data){
 
 		// var color = d3.scale.category10();
 		var color = d3.scale.ordinal()
-		.range(["#ffffff","#ebf0fa","#d6e0f5","#c2d1f0", "#adc2eb", "#99b3e6", "#85a3e0", "#7094db", "#5c85d6", "#4775d1", "#3366cc", "#2e5cb8", "#2952a3", "#24478f", "#1f3d7a", "#193366", "#142952", "#0f1f3d" ]);
+		.range(["#ffffff","#ebf0fa","#d6e0f5","#c2d1f0", "#adc2eb", "#99b3e6", "#85a3e0", "#7094db", "#5c85d6", "#4775d1", "#3366cc"]);
 
 		var pie = d3.layout.pie()
 			.value(function(d){
@@ -174,23 +269,28 @@ d3.tsv("https://gitguddd.github.io/finalwords.tsv", function (error, data){
 			.data(County_data);
 
 			slices.enter().append("path")
-			.attr("transform", "translate(550,250)")
+			.attr("transform", "translate(350,0)")
 			.style("fill", function(d, i){
 			return color(i);
 			})
 			.attr("d", arc);
 
 			slices.on("mouseover", function(d){
-				d3.select("h4").text(d.data.key);
+				d3.select("h4").text(d.data.key)
+				.attr("text-anchor", "middle");
+
 			})
+
              .on("mouseout", function(d){
              	d3.select("h4").text("");
+
              });
 
-             slices.on("click", function(d){
+             	slices.transition().attr("transform", "translate(300,250)").duration("1000");
+
+             	slices.on("click", function(d){
              	// d3.show("box")
 
-             	slices.transition().attr("transform", "translate(250,250)").duration("1000");
              	d3.select(".box").selectAll("p").remove();
              	var name = "Name: " + d.data.values[item].FirstName + " " + d.data.values[item].LastName 
              	var age = "Age: " + d.data.values[item].Age;
@@ -203,8 +303,8 @@ d3.tsv("https://gitguddd.github.io/finalwords.tsv", function (error, data){
 				d3.select(".box").append("p").text(date);
 
 
-             	d3.select("h4").transition().style("left", "210px").duration("1000");
-             	d3.select(".box").transition().style("display", "block").style("opacity",1.0).delay("1250");
+             	d3.select("h4").transition().style("left", "270px").duration("1000");
+             	d3.select(".box").transition().style("display", "block").style("opacity",1.0).delay("500");
              	// d3.select(".box").transition().style("opacity", "1.0").delay("1650");
 
              	var pathColor = d3.select(this).style("fill");
@@ -215,7 +315,6 @@ d3.tsv("https://gitguddd.github.io/finalwords.tsv", function (error, data){
 
              	}else {
              		item = item - 1
-             	          		console.log(item);
              		var name = "Name: " + d.data.values[item].FirstName + " " + d.data.values[item].LastName;
 	             		d3.select(".box").selectAll("p").remove();
 	             		d3.select(".box").append("p").text(name);
@@ -231,7 +330,6 @@ d3.tsv("https://gitguddd.github.io/finalwords.tsv", function (error, data){
               d3.select("#buttonnext").on("click", function (){ 
               	if (item < d.data.values.length){
               		item = item + 1;
-             		console.log(item);
              		var name = "Name: " + d.data.values[item].FirstName + " " + d.data.values[item].LastName;
 	             		d3.select(".box").selectAll("p").remove();
 	             		d3.select(".box").append("p").text(name);
@@ -254,10 +352,14 @@ d3.tsv("https://gitguddd.github.io/finalwords.tsv", function (error, data){
 })
 
 function introFunction(){
-		d3.select(".intro").classed("show", true); 
+		d3.select(".intro").classed("hide", true); 
 	}
 
+
+
+
 </script>
+<div id="footer">A data visualisation by Andrea Meger</div>
 </body>
 </html>
 
