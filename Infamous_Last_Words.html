@@ -29,6 +29,8 @@
 	position: fixed;
 	left:250px;
 	top:500px;
+	width:100%;
+	height:100%;
 
 }
 .sidebarnav{
@@ -58,9 +60,6 @@ h1 {
 .hide {
 	display:none;
 }
-.show {
-	display:block;
-}
 
 h4 {
 	position:absolute;
@@ -68,6 +67,10 @@ h4 {
 	/*margin-left: 510px;*/
 	font-family: 'Roboto', sans-serif;
 	font-weight:300;
+	left: 200px;
+    width: 200px;
+    top: 320px;
+
 }
 .arrow {
 	text-align: center;
@@ -90,15 +93,15 @@ h4 {
 }
 .box {
 	display:none;
-	height:395px;
+	height:155px;
 	width:300px;
 	position:absolute;
-	top:145px;
+	top:165px;
 	left:535px;
 	background-color: #FFF;
 	opacity: 0.0;
 	color:#000;
-	padding:40px;
+	padding:20px;
 	text-align: center;
 	
 	/*opacity: 0.0;*/
@@ -120,7 +123,12 @@ hr.inner {
 }
 
 #pie {
+top:-1000px;
+position: absolute;
+}
 
+.show {
+top:100px !important;
 }
 
 
@@ -191,6 +199,10 @@ p {
 	vertical-align: middle;
 }
 
+b {
+	font-weight: 500;
+}
+
 
 </style>
 
@@ -246,7 +258,7 @@ d3.tsv("https://gitguddd.github.io/finalwords.tsv", function (error, data){
 		
 		var County_data = d3.nest()
 			.key(function(d) {
-				return d.County;		
+				return d.County + " County";		
 			})
 			.entries(raw_data);
 
@@ -276,13 +288,22 @@ d3.tsv("https://gitguddd.github.io/finalwords.tsv", function (error, data){
 			.attr("d", arc);
 
 			slices.on("mouseover", function(d){
-				d3.select("h4").text(d.data.key)
-				.attr("text-anchor", "middle");
+				d3.select("h4").text(d.data.key);
+				// arcTween(500 / 2 - 20, 0)
 
 			})
 
+			// function arcTween(outerRadius, delay) {
+			//   return function() {
+			//     d3.select(this).transition().delay(delay).attrTween("d", function(d) {
+			//       var i = d3.interpolate(d.outerRadius, outerRadius);
+			//       return function(t) { d.outerRadius = i(t); return arc(d); };
+			//     });
+			//   };
+			// }
+
              .on("mouseout", function(d){
-             	d3.select("h4").text("");
+             	// d3.select("h4").text("");
 
              });
 
@@ -292,18 +313,16 @@ d3.tsv("https://gitguddd.github.io/finalwords.tsv", function (error, data){
              	// d3.show("box")
 
              	d3.select(".box").selectAll("p").remove();
-             	var name = "Name: " + d.data.values[item].FirstName + " " + d.data.values[item].LastName 
-             	var age = "Age: " + d.data.values[item].Age;
-             	var prisonId = "Prisoner ID: " + d.data.values[item].TDCJNumber;
-             	var date = "Date of Execution: " + d.data.values[item].Date;
+             	var name = "<b>Name: </b>" + d.data.values[item].FirstName + " " + d.data.values[item].LastName 
+             	var age = "<b>Age: </b>" + d.data.values[item].Age;
+             	var prisonId = "<b>Prisoner ID: </b>" + d.data.values[item].TDCJNumber;
+             	var date = "<b>Date of Execution: </b>" + d.data.values[item].Date;
 
-             	d3.select(".box").append("p").text(name);
-             	d3.select(".box").append("p").text(age);
-				d3.select(".box").append("p").text(prisonId);
-				d3.select(".box").append("p").text(date);
+             	d3.select(".box").append("p").html(name);
+             	d3.select(".box").append("p").html(age);
+				d3.select(".box").append("p").html(prisonId);
+				d3.select(".box").append("p").html(date);
 
-
-             	d3.select("h4").transition().style("left", "270px").duration("1000");
              	d3.select(".box").transition().style("display", "block").style("opacity",1.0).delay("500");
              	// d3.select(".box").transition().style("opacity", "1.0").delay("1650");
 
@@ -315,30 +334,30 @@ d3.tsv("https://gitguddd.github.io/finalwords.tsv", function (error, data){
 
              	}else {
              		item = item - 1
-             		var name = "Name: " + d.data.values[item].FirstName + " " + d.data.values[item].LastName;
+             		var name = "<b>Name:</b> " + d.data.values[item].FirstName + " " + d.data.values[item].LastName;
 	             		d3.select(".box").selectAll("p").remove();
-	             		d3.select(".box").append("p").text(name);
-	             	var age = "Age: " + d.data.values[item].Age;
-	             		d3.select(".box").append("p").text(age);
-	             	var prisonId = "Prisoner ID: " + d.data.values[item].TDCJNumber;
-	             		d3.select(".box").append("p").text(prisonId);
-	             	var date = "Date of Execution: " + d.data.values[item].Date;
-	             		d3.select(".box").append("p").text(date);
+	             		d3.select(".box").append("p").html(name);
+	             	var age = "<b>Age: </b>" + d.data.values[item].Age;
+	             		d3.select(".box").append("p").html(age);
+	             	var prisonId = "<b>Prisoner ID:</b> " + d.data.values[item].TDCJNumber;
+	             		d3.select(".box").append("p").html(prisonId);
+	             	var date = "<b>Date of Execution: </b>" + d.data.values[item].Date;
+	             		d3.select(".box").append("p").html(date);
              	}
              });
 
               d3.select("#buttonnext").on("click", function (){ 
               	if (item < d.data.values.length){
               		item = item + 1;
-             		var name = "Name: " + d.data.values[item].FirstName + " " + d.data.values[item].LastName;
+             		var name = "<b>Name:</b> " + d.data.values[item].FirstName + " " + d.data.values[item].LastName;
 	             		d3.select(".box").selectAll("p").remove();
-	             		d3.select(".box").append("p").text(name);
-	             	var age = "Age: " + d.data.values[item].Age;
-	             		d3.select(".box").append("p").text(age);
-	             	var prisonId = "Prisoner ID: " + d.data.values[item].TDCJNumber;
-	             		d3.select(".box").append("p").text(prisonId);
-	             	var date = "Date of Execution: " + d.data.values[item].Date;
-	             		d3.select(".box").append("p").text(date);
+	             		d3.select(".box").append("p").html(name);
+	             	var age = "<b>Age:</b> " + d.data.values[item].Age;
+	             		d3.select(".box").append("p").html(age);
+	             	var prisonId = "<b>Prisoner ID: </b>" + d.data.values[item].TDCJNumber;
+	             		d3.select(".box").append("p").html(prisonId);
+	             	var date = "<b>Date of Execution: </b>" + d.data.values[item].Date;
+	             		d3.select(".box").append("p").html(date);
              	}
              });
 
@@ -353,6 +372,8 @@ d3.tsv("https://gitguddd.github.io/finalwords.tsv", function (error, data){
 
 function introFunction(){
 		d3.select(".intro").classed("hide", true); 
+		d3.select("#pie").classed("show", true); 
+
 	}
 
 
