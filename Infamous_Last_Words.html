@@ -289,28 +289,24 @@ d3.tsv("https://gitguddd.github.io/finalwords.tsv", function (error, data){
 
 			slices.on("mouseover", function(d){
 				d3.select("h4").text(d.data.key);
-				// arcTween(500 / 2 - 20, 0)
-
+		
 			})
-
-			// function arcTween(outerRadius, delay) {
-			//   return function() {
-			//     d3.select(this).transition().delay(delay).attrTween("d", function(d) {
-			//       var i = d3.interpolate(d.outerRadius, outerRadius);
-			//       return function(t) { d.outerRadius = i(t); return arc(d); };
-			//     });
-			//   };
-			// }
-
+		
              .on("mouseout", function(d){
-             	// d3.select("h4").text("");
+
 
              });
+
 
              	slices.transition().attr("transform", "translate(300,250)").duration("1000");
 
              	slices.on("click", function(d){
              	// d3.show("box")
+
+             	d3.selectAll("path").style("opacity", "1.0");
+             	d3.select(this).style("opacity", "0.3");
+
+
 
              	d3.select(".box").selectAll("p").remove();
              	var name = "<b>Name: </b>" + d.data.values[item].FirstName + " " + d.data.values[item].LastName 
